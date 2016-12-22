@@ -24,4 +24,9 @@ public class StartScreen extends AppCompatActivity {
         Intent speedPracticeIntent = new Intent(StartScreen.this, SpeedPractice.class);
         startActivity(speedPracticeIntent);
     }
+
+    public void startSettings(View view) {
+        Intent settingsIntent = new Intent(StartScreen.this, Settings.class);
+        startActivity(settingsIntent);
+    }
 }

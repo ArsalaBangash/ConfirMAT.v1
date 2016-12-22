@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
 public class EndScreen extends AppCompatActivity {
-    Intent playAgainIntent, startIntent, endScreenInit;
+    Intent playAgainIntent, startIntent, endScreenInit, reportIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +22,11 @@ public class EndScreen extends AppCompatActivity {
         wellDoneText.setTypeface(robotoFont);
         playAgainIntent = new Intent(EndScreen.this, SpeedPractice.class);
         startIntent = new Intent(EndScreen.this, StartScreen.class);
+        reportIntent = new Intent(EndScreen.this, Report.class);
         endScreenInit = getIntent();
-        finalTimeText.setText("Your Time Taken: " + endScreenInit.getStringExtra(Intent.EXTRA_TEXT));
+        String timeTaken = endScreenInit.getStringExtra(Intent.EXTRA_TEXT);
+        reportIntent.putExtra(Intent.EXTRA_TEXT, timeTaken);
+        finalTimeText.setText("Your Time Taken: " + timeTaken);
 
 
     }
@@ -35,4 +38,6 @@ public class EndScreen extends AppCompatActivity {
     public void mainMenu(View view) {
         startActivity(startIntent);
     }
+
+    public void startReport(View view) { startActivity(reportIntent);}
 }

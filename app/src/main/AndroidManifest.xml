@@ -18,7 +18,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".EndScreen" />
-        <activity android:name=".SpeedPractice"></activity>
+        <activity android:name=".SpeedPractice" />
+        <activity android:name=".Report" />
+        <activity android:name=".Settings"></activity>
     </application>
 
 </manifest>
