@@ -122,14 +122,8 @@ public class MathModel {
             d = Double.valueOf(numberFormat.format(1 + (21 - 1) * rand.nextDouble()));
             dAnswer = Double.valueOf(numberFormat.format(c+d));
             if (dAnswer == Math.floor(dAnswer)) {
-                Log.d("MYAPP", "Equals Floor");
-                Log.d("MYAPP", String.valueOf(dAnswer));
-                Log.d("MYAPP", String.valueOf(isDecimalInt));
                 isDecimalInt = true;
             } else {
-                Log.d("MYAPP", "Does not equal floor");
-                Log.d("MYAPP", String.valueOf(dAnswer));
-                Log.d("MYAPP", String.valueOf(isDecimalInt));
                 isDecimalInt = false;
             }
             stringBuilder.append(Double.toString(c) + "+" + Double.toString(d) + " =");
@@ -138,14 +132,8 @@ public class MathModel {
             d = Double.valueOf(numberFormat.format(1 + (21 - 1) * rand.nextDouble()));
             dAnswer = Double.valueOf(numberFormat.format(c - d));
             if (dAnswer == Math.floor(dAnswer)) {
-                Log.d("MYAPP", "Equals Floor");
-                Log.d("MYAPP", String.valueOf(dAnswer));
-                Log.d("MYAPP", String.valueOf(isDecimalInt));
                 isDecimalInt = true;
             } else {
-                Log.d("MYAPP", "Does not equal floor");
-                Log.d("MYAPP", String.valueOf(dAnswer));
-                Log.d("MYAPP", String.valueOf(isDecimalInt));
                 isDecimalInt = false;
             }
             stringBuilder.append(Double.toString(c) + "-" + Double.toString(d) + " =");

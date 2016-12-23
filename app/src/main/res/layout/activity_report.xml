@@ -22,11 +22,11 @@
 
     <TextView
         android:text="Your time taken: "
-        android:textSize="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/reportTimeTaken"
         android:layout_below="@+id/finalReportText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:textSize="15dp" />
 </RelativeLayout>

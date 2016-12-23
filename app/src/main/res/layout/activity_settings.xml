@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
-        android:id="@+id/switch6"
+        android:id="@+id/additionSwitch"
         android:checked="true"
         android:layout_below="@+id/settingsText"
         android:layout_alignParentLeft="true"
@@ -39,8 +39,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/subtractionSwitch"
         android:checked="true"
-        android:layout_alignBaseline="@+id/switch6"
-        android:layout_alignBottom="@+id/switch6"
+        android:layout_alignBaseline="@+id/additionSwitch"
+        android:layout_alignBottom="@+id/additionSwitch"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="29dp"
@@ -53,9 +53,9 @@
         android:layout_marginTop="41dp"
         android:id="@+id/multiplySwitch"
         android:checked="true"
-        android:layout_below="@+id/switch6"
-        android:layout_alignRight="@+id/switch6"
-        android:layout_alignEnd="@+id/switch6" />
+        android:layout_below="@+id/additionSwitch"
+        android:layout_alignRight="@+id/additionSwitch"
+        android:layout_alignEnd="@+id/additionSwitch" />
 
     <android.support.v7.widget.SwitchCompat
         android:text="Division   "

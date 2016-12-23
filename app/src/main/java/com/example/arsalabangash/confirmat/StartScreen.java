@@ -22,6 +22,7 @@ public class StartScreen extends AppCompatActivity {
 
     public void startGame(View view) {
         Intent speedPracticeIntent = new Intent(StartScreen.this, SpeedPractice.class);
+        speedPracticeIntent.putExtra(Intent.EXTRA_TEXT, "Initial");
         startActivity(speedPracticeIntent);
     }
 

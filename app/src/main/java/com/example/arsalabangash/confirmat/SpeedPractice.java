@@ -5,12 +5,9 @@ import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Chronometer;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class SpeedPractice extends AppCompatActivity {
@@ -19,7 +16,7 @@ public class SpeedPractice extends AppCompatActivity {
     MediaPlayer correctMP, inCorrectMP;
     Chronometer timer;
     MathModel mathModel;
-    Intent endScreenIntent, startIntent;
+    Intent endScreenIntent, startIntent, factorisationIntent, speedPracticeInit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,17 +28,25 @@ public class SpeedPractice extends AppCompatActivity {
         inCorrectMP = MediaPlayer.create(this, R.raw.incorrect);
         currentProblem = (TextView) findViewById(R.id.currentProblem);
         currentProblem.setTypeface(robotoFont);
-        currentAnswer = (TextView) findViewById(R.id.currentAnswer);
+        currentAnswer = (TextView) findViewById(R.id.openBracket);
         currentAnswer.setTypeface(robotoFont);
         questionsLeft = (TextView) findViewById(R.id.questionsLeft);
         questionsLeft.setTypeface(robotoFont);
-        questions = 1;
+        questions = 10;
         mathModel = new MathModel();
         currentProblem.setText(mathModel.newProblem());
+        speedPracticeInit = getIntent();
         timer = (Chronometer) findViewById(R.id.timeTaken);
+        if (speedPracticeInit.getStringExtra(Intent.EXTRA_TEXT).equals("Initial")) {
+            timer.start();
+        } else {
+            timer.setBase(speedPracticeInit.getLongExtra("CHRONO_TIME", 0));
+        }
         timer.start();
         endScreenIntent = new Intent(SpeedPractice.this, EndScreen.class);
         startIntent = new Intent(SpeedPractice.this, StartScreen.class);
+        factorisationIntent = new Intent(SpeedPractice.this, FactorisationBolt.class);
+
 
 
     }
@@ -73,8 +78,14 @@ public class SpeedPractice extends AppCompatActivity {
         }
 
         if (questions == 0) {
-            endScreenIntent.putExtra(Intent.EXTRA_TEXT, timer.getContentDescription());
-            startActivity(endScreenIntent);
+            String state = speedPracticeInit.getStringExtra(Intent.EXTRA_TEXT);
+            if (state.equals("Initial")) {
+                factorisationIntent.putExtra("CHRONO_TIME", timer.getBase());
+                startActivity(factorisationIntent);
+            } else if (state.equals("Final")){
+                endScreenIntent.putExtra(Intent.EXTRA_TEXT, timer.getContentDescription());
+                startActivity(endScreenIntent);
+            }
         }
         currentAnswer.setText("");
         questionsLeft.setText(Integer.toString(questions));

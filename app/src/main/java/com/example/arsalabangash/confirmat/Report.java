@@ -16,8 +16,10 @@ public class Report extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_report);
         TextView reportTimeTakenText = (TextView)findViewById(R.id.reportTimeTaken);
+        TextView finalReportText = (TextView)findViewById(R.id.finalReportText);
         Typeface robotoFont = Typeface.createFromAsset(getAssets(), "fonts/roboto.ttf");
         reportTimeTakenText.setTypeface(robotoFont);
+        finalReportText.setTypeface(robotoFont);
         reportInit = getIntent();
         String timeTaken = reportInit.getStringExtra(Intent.EXTRA_TEXT);
         reportTimeTakenText.setText("Your Time Taken: " + timeTaken);

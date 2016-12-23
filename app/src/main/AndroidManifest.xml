@@ -20,7 +20,8 @@
         <activity android:name=".EndScreen" />
         <activity android:name=".SpeedPractice" />
         <activity android:name=".Report" />
-        <activity android:name=".Settings"></activity>
+        <activity android:name=".Settings" />
+        <activity android:name=".FactorisationBolt"></activity>
     </application>
 
 </manifest>
