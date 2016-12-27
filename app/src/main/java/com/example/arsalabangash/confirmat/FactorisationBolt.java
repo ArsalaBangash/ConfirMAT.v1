@@ -73,7 +73,6 @@ public class FactorisationBolt extends AppCompatActivity {
 
 
     public void push(View view) {
-
             charactersEntered++;
             if (charactersEntered <=3) {
                 firstFactorText.setText(firstFactorText.getText() + view.getTag().toString());
@@ -96,12 +95,15 @@ public class FactorisationBolt extends AppCompatActivity {
                         firstFactorText.getText().toString().length() - 1);
                 firstFactorText.setText(newCurrentAnswer);
             }
-        } else if (charactersEntered <=6 && charactersEntered > 3){
+        } else if (charactersEntered > 3){
             if (secondFactorText.length() >0) {
                 String newCurrentAnswer = slice_end(secondFactorText.getText().toString(),
                         secondFactorText.getText().toString().length() - 1);
                 secondFactorText.setText(newCurrentAnswer);
             }
+        }
+        if (charactersEntered >0) {
+            charactersEntered--;
         }
     }
 
@@ -150,7 +152,6 @@ public class FactorisationBolt extends AppCompatActivity {
         ArrayList<String> quadArray = parseArrayFactors(answer1Array,answer2Array);
 
         parsedAnswer = getParsedAnswer(quadArray);
-        Log.d("AppDebug", parsedAnswer);
         SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
         Integer squaredCoeff = Integer.parseInt(quadArray.get(0));
         Integer xCoeff = (Integer.parseInt(quadArray.get(1)) + Integer.parseInt(quadArray.get(2))) / 1000;
@@ -174,8 +175,6 @@ public class FactorisationBolt extends AppCompatActivity {
             stringBuilder.append("- " + (-1*constant));
         }
 
-
-
         if (String.valueOf(stringBuilder.charAt(0)).equals("-")) {
             stringBuilder.setSpan(new SuperscriptSpan(), 2, 3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             stringBuilder.setSpan(new RelativeSizeSpan(0.75f), 2, 3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -183,38 +182,43 @@ public class FactorisationBolt extends AppCompatActivity {
             stringBuilder.setSpan(new SuperscriptSpan(), 1, 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             stringBuilder.setSpan(new RelativeSizeSpan(0.75f), 1, 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
-
         currentProblemText.setText(stringBuilder);
     }
 
 
 
     public void check(View view) {
-        int[] factor1Array = parseStringFactors(String.valueOf(firstFactorText.getText()));
-        int[] factor2Array = parseStringFactors(String.valueOf(secondFactorText.getText()));
-        ArrayList<String> answerParsedArray = parseArrayFactors(factor1Array, factor2Array);
-        String currentParsedAnswer = getParsedAnswer(answerParsedArray);
+        if (firstFactorText.getText().length() == 3 && secondFactorText.getText().length() == 3) {
+            int[] factor1Array = parseStringFactors(String.valueOf(firstFactorText.getText()));
+            int[] factor2Array = parseStringFactors(String.valueOf(secondFactorText.getText()));
+            ArrayList<String> answerParsedArray = parseArrayFactors(factor1Array, factor2Array);
+            String currentParsedAnswer = getParsedAnswer(answerParsedArray);
 
-        if (currentParsedAnswer == parsedAnswer) {
-            if(correctMP.isPlaying()) {
-                correctMP.stop();
+            if (currentParsedAnswer.equals(parsedAnswer)) {
+                if(correctMP.isPlaying()) {
+                    correctMP.stop();
+                }
+                correctMP.start();
+                questions--;
+                newFactorisationProblem();
+            } else {
+                inCorrectMP.start();
             }
-            correctMP.start();
-            questions--;
-            newFactorisationProblem();
+
+            if (questions == 0) {
+                speedPracticeIntent.putExtra("CHRONO_TIME", timer.getBase());
+                speedPracticeIntent.putExtra(Intent.EXTRA_TEXT, "Final");
+                startActivity(speedPracticeIntent);
+            }
+
         } else {
             inCorrectMP.start();
+            firstFactorText.setText("");
+            secondFactorText.setText("");
+            questionsLeft.setText(Integer.toString(questions));
+            charactersEntered = 0;
         }
 
-        if (questions == 0) {
-            speedPracticeIntent.putExtra("CHRONO_TIME", timer.getBase());
-            speedPracticeIntent.putExtra(Intent.EXTRA_TEXT, "Final");
-            startActivity(speedPracticeIntent);
-        }
-        firstFactorText.setText("");
-        secondFactorText.setText("");
-        questionsLeft.setText(Integer.toString(questions));
-        charactersEntered = 0;
 
     }
 
@@ -236,33 +240,40 @@ public class FactorisationBolt extends AppCompatActivity {
 
     public int[] parseStringFactors(String factorString) {
         int[] stringFactorArray = new int[2];
-        if (String.valueOf(factorString.charAt(0)).equals("x")) {
-            stringFactorArray[0] = 1000;
-        } else {
-            stringFactorArray[0] = Integer.parseInt(String.valueOf(factorString.charAt(0)));
-        }
-        if (String.valueOf(factorString.charAt(1)).equals("+")) {
-            if (String.valueOf(factorString.charAt(2)).equals("x")) {
-                stringFactorArray[1] = 1000;
+        try {
+            if (String.valueOf(factorString.charAt(0)).equals("x")) {
+                stringFactorArray[0] = 1000;
             } else {
-                stringFactorArray[1] = Integer.parseInt(String.valueOf(factorString.charAt(2)));
+                stringFactorArray[0] = Integer.parseInt(String.valueOf(factorString.charAt(0)));
             }
-        } else {
-            if (String.valueOf(factorString.charAt(2)).equals("x")) {
-                stringFactorArray[0] = -1000;
+            if (String.valueOf(factorString.charAt(1)).equals("+")) {
+                if (String.valueOf(factorString.charAt(2)).equals("x")) {
+                    stringFactorArray[1] = 1000;
+                } else {
+                    stringFactorArray[1] = Integer.parseInt(String.valueOf(factorString.charAt(2)));
+
+                }
             } else {
-                stringFactorArray[1] = -1 * Integer.parseInt(String.valueOf(factorString.charAt(2)));
+                if (String.valueOf(factorString.charAt(2)).equals("x")) {
+                    stringFactorArray[0] = -1000;
+                } else {
+                    stringFactorArray[1] = -1 * Integer.parseInt(String.valueOf(factorString.charAt(2)));
+                }
             }
+        } catch (NumberFormatException e) {
+            stringFactorArray[0] = -1;
+            stringFactorArray[1] = -1;
         }
         return stringFactorArray;
+
     }
 
     public String getParsedAnswer(ArrayList<String> parsedArray) {
-        parsedAnswer = "";
+        String parsed = "";
         for (int i = 0; i<parsedArray.size(); i++) {
-            parsedAnswer += parsedArray.get(i);
-            parsedAnswer += ",,";
+            parsed += parsedArray.get(i);
+            parsed += ",,";
         }
-        return parsedAnswer;
+        return parsed;
     }
 }

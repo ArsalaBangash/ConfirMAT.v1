@@ -32,7 +32,7 @@ public class SpeedPractice extends AppCompatActivity {
         currentAnswer.setTypeface(robotoFont);
         questionsLeft = (TextView) findViewById(R.id.questionsLeft);
         questionsLeft.setTypeface(robotoFont);
-        questions = 10;
+        questions = 1;
         mathModel = new MathModel();
         currentProblem.setText(mathModel.newProblem());
         speedPracticeInit = getIntent();
