@@ -32,7 +32,7 @@ public class SpeedPractice extends AppCompatActivity {
         currentAnswer.setTypeface(robotoFont);
         questionsLeft = (TextView) findViewById(R.id.questionsLeft);
         questionsLeft.setTypeface(robotoFont);
-        questions = 2;
+        questions = 5;
         mathModel = new MathModel();
         currentProblem.setText(mathModel.newProblem());
         speedPracticeInit = getIntent();
@@ -81,7 +81,7 @@ public class SpeedPractice extends AppCompatActivity {
             questions--;
             ReportData.getReportData().inputReportData(String.valueOf(currentProblem.getText()),
                                                         String.valueOf(currentAnswer.getText()),
-                                                        String.valueOf(currentQuestionTimeTaken),
+                                                        String.valueOf(currentQuestionTimeTaken) + "s",
                                                         String.valueOf(currentQuestionsAttempts));
             currentQuestionsAttempts = 0;
             currentQuestionTimeTaken = 0;

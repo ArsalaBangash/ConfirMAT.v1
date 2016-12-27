@@ -58,7 +58,7 @@ public class FactorisationBolt extends AppCompatActivity {
         remainingText.setTypeface(robotoFont);
         questionsLeft = (TextView) findViewById(R.id.questionsLeft);
         questionsLeft.setTypeface(robotoFont);
-        questions = 1;
+        questions = 3;
         questionsLeft.setText(""+ questions);
         timer = (Chronometer) findViewById(R.id.timeTaken);
         timer.start();
