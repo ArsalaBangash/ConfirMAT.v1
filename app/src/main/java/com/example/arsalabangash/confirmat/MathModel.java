@@ -12,10 +12,6 @@ import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Random;
 
-/**
- * Created by Arsala on 2016-12-09.
- */
-
 public class MathModel {
 
     private HashMap<Integer,Integer> exponentMap;
@@ -26,7 +22,7 @@ public class MathModel {
     private Boolean isDecimalInt;
 
     public MathModel() {
-        exponentMap = new HashMap<Integer, Integer>();
+        exponentMap = new HashMap<>();
         exponentMap.put(2,5);
         exponentMap.put(3,3);
         exponentMap.put(4,2);

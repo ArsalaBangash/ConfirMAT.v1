@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class SpeedPractice extends AppCompatActivity {
     TextView currentProblem, currentAnswer, questionsLeft;
-    int questions;
+    int questions, currentQuestionsAttempts = 0, currentQuestionTimeTaken = 0;
     MediaPlayer correctMP, inCorrectMP;
     Chronometer timer;
     MathModel mathModel;
@@ -32,7 +32,7 @@ public class SpeedPractice extends AppCompatActivity {
         currentAnswer.setTypeface(robotoFont);
         questionsLeft = (TextView) findViewById(R.id.questionsLeft);
         questionsLeft.setTypeface(robotoFont);
-        questions = 1;
+        questions = 2;
         mathModel = new MathModel();
         currentProblem.setText(mathModel.newProblem());
         speedPracticeInit = getIntent();
@@ -43,6 +43,13 @@ public class SpeedPractice extends AppCompatActivity {
             timer.setBase(speedPracticeInit.getLongExtra("CHRONO_TIME", 0));
         }
         timer.start();
+        timer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+
+            public void onChronometerTick(Chronometer chronometer) {
+                chronometer.refreshDrawableState();
+                currentQuestionTimeTaken++;
+            }
+        });
         endScreenIntent = new Intent(SpeedPractice.this, EndScreen.class);
         startIntent = new Intent(SpeedPractice.this, StartScreen.class);
         factorisationIntent = new Intent(SpeedPractice.this, FactorisationBolt.class);
@@ -65,12 +72,19 @@ public class SpeedPractice extends AppCompatActivity {
 
 
     public void check(View view) {
+        currentQuestionsAttempts++;
         if (currentAnswer.getText().equals(mathModel.getAnswer())) {
             if(correctMP.isPlaying()) {
                 correctMP.stop();
             }
             correctMP.start();
             questions--;
+            ReportData.getReportData().inputReportData(String.valueOf(currentProblem.getText()),
+                                                        String.valueOf(currentAnswer.getText()),
+                                                        String.valueOf(currentQuestionTimeTaken),
+                                                        String.valueOf(currentQuestionsAttempts));
+            currentQuestionsAttempts = 0;
+            currentQuestionTimeTaken = 0;
             currentProblem.setText(mathModel.newProblem());
 
         } else {

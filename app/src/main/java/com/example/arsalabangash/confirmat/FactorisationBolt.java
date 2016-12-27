@@ -3,7 +3,6 @@ package com.example.arsalabangash.confirmat;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
-import android.support.annotation.IntegerRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Spannable;
@@ -25,11 +24,12 @@ public class FactorisationBolt extends AppCompatActivity {
     TextView currentProblemText, firstFactorText, remainingText, questionsLeft, secondFactorText,
     openBracket, middleBracket, endBracket, factoriseLabel;
     Chronometer timer;
-    int charactersEntered = 0, questions;
+    int charactersEntered = 0, questions, currentQuestionsAttempts, currentQuestionTimeTaken;
     private Random rand;
     MediaPlayer correctMP, inCorrectMP;
     Intent speedPracticeIntent, factorisationInit;
     String answer1, answer2, parsedAnswer;
+
 
 
 
@@ -58,7 +58,7 @@ public class FactorisationBolt extends AppCompatActivity {
         remainingText.setTypeface(robotoFont);
         questionsLeft = (TextView) findViewById(R.id.questionsLeft);
         questionsLeft.setTypeface(robotoFont);
-        questions = 5;
+        questions = 1;
         questionsLeft.setText(""+ questions);
         timer = (Chronometer) findViewById(R.id.timeTaken);
         timer.start();
@@ -67,10 +67,16 @@ public class FactorisationBolt extends AppCompatActivity {
         speedPracticeIntent = new Intent(FactorisationBolt.this, SpeedPractice.class);
         factorisationInit = getIntent();
         timer.setBase(factorisationInit.getLongExtra("CHRONO_TIME", 0));
+        timer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+
+            public void onChronometerTick(Chronometer chronometer) {
+                chronometer.refreshDrawableState();
+                currentQuestionTimeTaken++;
+            }
+        });
+
 
     }
-
-
 
     public void push(View view) {
             charactersEntered++;
@@ -108,6 +114,8 @@ public class FactorisationBolt extends AppCompatActivity {
     }
 
     public void newFactorisationProblem() {
+        currentQuestionsAttempts = 0;
+        currentQuestionTimeTaken = 0;
         int number1 = rand.nextInt(9) + 1;
         int number2 = rand.nextInt(9) + 1;
         int operator1 = rand.nextInt(2);
@@ -188,18 +196,28 @@ public class FactorisationBolt extends AppCompatActivity {
 
 
     public void check(View view) {
+        currentQuestionsAttempts++;
         if (firstFactorText.getText().length() == 3 && secondFactorText.getText().length() == 3) {
             int[] factor1Array = parseStringFactors(String.valueOf(firstFactorText.getText()));
             int[] factor2Array = parseStringFactors(String.valueOf(secondFactorText.getText()));
             ArrayList<String> answerParsedArray = parseArrayFactors(factor1Array, factor2Array);
+            ArrayList<String> answerParsedArray2 = parseArrayFactors(factor2Array, factor1Array);
             String currentParsedAnswer = getParsedAnswer(answerParsedArray);
+            String currentParsedAnswer2 = getParsedAnswer(answerParsedArray2);
+            Log.d("APP1", currentParsedAnswer);
+            Log.d("APP2", currentParsedAnswer2);
+            Log.d("App3", parsedAnswer);
 
-            if (currentParsedAnswer.equals(parsedAnswer)) {
+            if (currentParsedAnswer.equals(parsedAnswer) || currentParsedAnswer2.equals(parsedAnswer)) {
                 if(correctMP.isPlaying()) {
                     correctMP.stop();
                 }
                 correctMP.start();
                 questions--;
+                ReportData.getReportData().inputReportData(String.valueOf(currentProblemText.getText()),
+                        "(" + firstFactorText.getText() + ") (" + secondFactorText.getText() + ")",
+                                                            String.valueOf(currentQuestionTimeTaken) + "s",
+                                                            String.valueOf(currentQuestionsAttempts));
                 newFactorisationProblem();
             } else {
                 inCorrectMP.start();
@@ -213,11 +231,11 @@ public class FactorisationBolt extends AppCompatActivity {
 
         } else {
             inCorrectMP.start();
-            firstFactorText.setText("");
-            secondFactorText.setText("");
-            questionsLeft.setText(Integer.toString(questions));
-            charactersEntered = 0;
         }
+        firstFactorText.setText("");
+        secondFactorText.setText("");
+        questionsLeft.setText(Integer.toString(questions));
+        charactersEntered = 0;
 
 
     }
@@ -255,7 +273,7 @@ public class FactorisationBolt extends AppCompatActivity {
                 }
             } else {
                 if (String.valueOf(factorString.charAt(2)).equals("x")) {
-                    stringFactorArray[0] = -1000;
+                    stringFactorArray[1] = -1000;
                 } else {
                     stringFactorArray[1] = -1 * Integer.parseInt(String.valueOf(factorString.charAt(2)));
                 }
