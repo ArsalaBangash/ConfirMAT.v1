@@ -23,20 +23,20 @@ public class SpeedPractice extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_speed_practice);
-        Typeface robotoFont = Typeface.createFromAsset(getAssets(), "fonts/roboto.ttf");
+
+        //Initializes TextViews, MediaPlayers, and Chronometer
         correctMP = MediaPlayer.create(this, R.raw.correct);
         inCorrectMP = MediaPlayer.create(this, R.raw.incorrect);
         currentProblem = (TextView) findViewById(R.id.currentProblem);
-        currentProblem.setTypeface(robotoFont);
         currentAnswer = (TextView) findViewById(R.id.openBracket);
-        currentAnswer.setTypeface(robotoFont);
         questionsLeft = (TextView) findViewById(R.id.questionsLeft);
-        questionsLeft.setTypeface(robotoFont);
+        timer = (Chronometer) findViewById(R.id.timeTaken);
+
+
         questions = 5;
         mathModel = new MathModel();
         currentProblem.setText(mathModel.newProblem());
         speedPracticeInit = getIntent();
-        timer = (Chronometer) findViewById(R.id.timeTaken);
         if (speedPracticeInit.getStringExtra(Intent.EXTRA_TEXT).equals("Initial")) {
             timer.start();
         } else {

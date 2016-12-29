@@ -45,7 +45,7 @@ public class MathModel {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public SpannableStringBuilder newProblem() {
 
-        operator = rand.nextInt(89);
+        operator = rand.nextInt(76);
         SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
         if (operator <= 10) {
             a = rand.nextInt(21) + 1;
@@ -86,7 +86,7 @@ public class MathModel {
                     stringBuilder.setSpan(new RelativeSizeSpan(0.75f), 1, 3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 }
             }
-        } else if (operator > 49 && operator <= 58) {
+        } else if (operator > 49 && operator <= 54) {
             answer = rand.nextInt(10) + 3;
             b = rand.nextInt(exponentMap.get(answer)) + 2;
             System.out.println(b);
@@ -98,7 +98,7 @@ public class MathModel {
                 stringBuilder.setSpan(new SuperscriptSpan(), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 stringBuilder.setSpan(new RelativeSizeSpan(0.5f), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
-        } else if (operator > 58 && operator <= 67) {
+        } else if (operator > 54 && operator <= 60) {
             b = rand.nextInt(10) + 3;
             answer = rand.nextInt(exponentMap.get(b)) + 2;
             a = ((int) Math.pow((double) b, (double) answer));
@@ -108,12 +108,12 @@ public class MathModel {
             } else if (String.valueOf(b).length() == 2) {
                 stringBuilder.setSpan(new RelativeSizeSpan(0.35f), 3, 5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
-        } else if (operator > 67 && operator <= 72) {
+        } else if (operator > 60 && operator <= 65) {
             a = rand.nextInt(20) + 1;
             b = rand.nextInt(20) + 1;
             answer = a % b;
             stringBuilder.append(Integer.toString(a) + "\uFF05" + Integer.toString(b) + " =");
-        } else if (operator > 72 && operator <= 80) {
+        } else if (operator > 65 && operator <= 70) {
             c = Double.valueOf(numberFormat.format(1 + (21 - 1) * rand.nextDouble()));
             d = Double.valueOf(numberFormat.format(1 + (21 - 1) * rand.nextDouble()));
             dAnswer = Double.valueOf(numberFormat.format(c+d));
@@ -123,7 +123,7 @@ public class MathModel {
                 isDecimalInt = false;
             }
             stringBuilder.append(Double.toString(c) + "+" + Double.toString(d) + " =");
-        } else if (operator > 80 && operator <= 88) {
+        } else if (operator > 70 && operator <= 75) {
             c = Double.valueOf(numberFormat.format(1 + (21 - 1) * rand.nextDouble()));
             d = Double.valueOf(numberFormat.format(1 + (21 - 1) * rand.nextDouble()));
             dAnswer = Double.valueOf(numberFormat.format(c - d));
@@ -138,7 +138,7 @@ public class MathModel {
     }
 
     public String getAnswer() {
-        if (operator > 72 && operator <= 88) {
+        if (operator > 65 && operator <= 75) {
             if (isDecimalInt) {
                 return numberFormat2.format(dAnswer);
             } else {

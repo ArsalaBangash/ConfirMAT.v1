@@ -21,8 +21,7 @@ import java.util.Random;
 
 public class FactorisationBolt extends AppCompatActivity {
 
-    TextView currentProblemText, firstFactorText, remainingText, questionsLeft, secondFactorText,
-    openBracket, middleBracket, endBracket, factoriseLabel;
+    TextView currentProblemText, firstFactorText, questionsLeft, secondFactorText;
     Chronometer timer;
     int charactersEntered = 0, questions, currentQuestionsAttempts, currentQuestionTimeTaken;
     private Random rand;
@@ -37,30 +36,18 @@ public class FactorisationBolt extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_factorisation_bolt);
+
+        //Initializes TextViews, MediaPlayers, and Chronometer
         correctMP = MediaPlayer.create(this, R.raw.correct);
         inCorrectMP = MediaPlayer.create(this, R.raw.incorrect);
         currentProblemText = (TextView)findViewById(R.id.currentProblem);
         firstFactorText = (TextView)findViewById(R.id.firstFactorText);
         secondFactorText = (TextView)findViewById(R.id.secondFactorText);
-        openBracket = (TextView)findViewById(R.id.openBracket);
-        middleBracket = (TextView)findViewById(R.id.middleBracket);
-        endBracket = (TextView)findViewById(R.id.endBracket);
-        remainingText = (TextView)findViewById(R.id.problemsRemainingTextView);
-        factoriseLabel = (TextView)findViewById(R.id.factoriseLabel);
-        Typeface robotoFont = Typeface.createFromAsset(getAssets(), "fonts/roboto.ttf");
-        factoriseLabel.setTypeface(robotoFont);
-        currentProblemText.setTypeface(robotoFont);
-        firstFactorText.setTypeface(robotoFont);
-        secondFactorText.setTypeface(robotoFont);
-        openBracket.setTypeface(robotoFont);
-        middleBracket.setTypeface(robotoFont);
-        endBracket.setTypeface(robotoFont);
-        remainingText.setTypeface(robotoFont);
         questionsLeft = (TextView) findViewById(R.id.questionsLeft);
-        questionsLeft.setTypeface(robotoFont);
-        questions = 3;
-        questionsLeft.setText(""+ questions);
         timer = (Chronometer) findViewById(R.id.timeTaken);
+
+        questions = 3;
+        questionsLeft.setText(String.valueOf(questions));
         timer.start();
         rand = new Random();
         this.newFactorisationProblem();
@@ -204,9 +191,6 @@ public class FactorisationBolt extends AppCompatActivity {
             ArrayList<String> answerParsedArray2 = parseArrayFactors(factor2Array, factor1Array);
             String currentParsedAnswer = getParsedAnswer(answerParsedArray);
             String currentParsedAnswer2 = getParsedAnswer(answerParsedArray2);
-            Log.d("APP1", currentParsedAnswer);
-            Log.d("APP2", currentParsedAnswer2);
-            Log.d("App3", parsedAnswer);
 
             if (currentParsedAnswer.equals(parsedAnswer) || currentParsedAnswer2.equals(parsedAnswer)) {
                 if(correctMP.isPlaying()) {
@@ -216,8 +200,8 @@ public class FactorisationBolt extends AppCompatActivity {
                 questions--;
                 ReportData.getReportData().inputReportData(String.valueOf(currentProblemText.getText()),
                         "(" + firstFactorText.getText() + ") (" + secondFactorText.getText() + ")",
-                                                            String.valueOf(currentQuestionTimeTaken) + "s",
-                                                            String.valueOf(currentQuestionsAttempts));
+                        String.valueOf(currentQuestionTimeTaken) + "s",
+                        String.valueOf(currentQuestionsAttempts));
                 newFactorisationProblem();
             } else {
                 inCorrectMP.start();
@@ -285,6 +269,7 @@ public class FactorisationBolt extends AppCompatActivity {
         return stringFactorArray;
 
     }
+
 
     public String getParsedAnswer(ArrayList<String> parsedArray) {
         String parsed = "";
