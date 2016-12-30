@@ -15,17 +15,22 @@ public class StartScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_start_screen);
-        TextView titleText = (TextView)findViewById(R.id.titleText);
-        Typeface robotoFont = Typeface.createFromAsset(getAssets(), "fonts/roboto.ttf");
-        titleText.setTypeface(robotoFont);
     }
 
+    /**
+     * Starts the Math Practice storm
+     * @param view The Start Game button
+     */
     public void startGame(View view) {
         Intent speedPracticeIntent = new Intent(StartScreen.this, SpeedPractice.class);
         speedPracticeIntent.putExtra(Intent.EXTRA_TEXT, "Initial");
         startActivity(speedPracticeIntent);
     }
 
+    /**
+     * Starts the Settings activity
+     * @param view The settings button
+     */
     public void startSettings(View view) {
         Intent settingsIntent = new Intent(StartScreen.this, Settings.class);
         startActivity(settingsIntent);

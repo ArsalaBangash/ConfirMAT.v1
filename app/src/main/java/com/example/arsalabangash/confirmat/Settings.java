@@ -11,8 +11,5 @@ public class Settings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        TextView settingsText = (TextView)findViewById(R.id.settingsText);
-        Typeface robotoFont = Typeface.createFromAsset(getAssets(), "fonts/roboto.ttf");
-        settingsText.setTypeface(robotoFont);
     }
 }

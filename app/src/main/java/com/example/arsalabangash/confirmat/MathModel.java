@@ -48,19 +48,19 @@ public class MathModel {
         operator = rand.nextInt(76);
         SpannableStringBuilder stringBuilder = new SpannableStringBuilder();
         if (operator <= 10) {
-            a = rand.nextInt(21) + 1;
-            b = rand.nextInt(21) + 1;
+            a = rand.nextInt(100) + 1;
+            b = rand.nextInt(100) + 1;
             answer = a + b;
             stringBuilder.append(Integer.toString(a) + "+" + Integer.toString(b) + " =");
         } else if (operator > 10 && operator <= 20) {
-            a = rand.nextInt(21) + 1;
-            b = rand.nextInt(21) + 1;
+            a = rand.nextInt(100) + 1;
+            b = rand.nextInt(100) + 1;
             answer = a - b;
             stringBuilder.append(Integer.toString(a) + "-" + Integer.toString(b) + " =");
 
         } else if (operator > 20 && operator <= 30) {
-            a = rand.nextInt(12) + 1;
-            b = rand.nextInt(12) + 1;
+            a = rand.nextInt(12) + 2;
+            b = rand.nextInt(12) + 2;
             answer = a * b;
             stringBuilder.append(Integer.toString(a) + "*" + Integer.toString(b) + " =");
         } else if (operator > 30 && operator <= 40) {
@@ -92,9 +92,9 @@ public class MathModel {
             System.out.println(b);
             a = (int) Math.pow((double)answer, (double)b);
             if(b == 2) {
-                stringBuilder.append("\u221A" + String.valueOf(a));
+                stringBuilder.append("\u221A" + String.valueOf(a) + " =");
             } else {
-                stringBuilder.append(String.valueOf(b) + "\u221A" + String.valueOf(a));
+                stringBuilder.append(String.valueOf(b) + "\u221A" + String.valueOf(a) + " =");
                 stringBuilder.setSpan(new SuperscriptSpan(), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 stringBuilder.setSpan(new RelativeSizeSpan(0.5f), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
@@ -108,11 +108,13 @@ public class MathModel {
             } else if (String.valueOf(b).length() == 2) {
                 stringBuilder.setSpan(new RelativeSizeSpan(0.35f), 3, 5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
+
         } else if (operator > 60 && operator <= 65) {
-            a = rand.nextInt(20) + 1;
-            b = rand.nextInt(20) + 1;
+            b = rand.nextInt(20) + 2;
+            a = b + rand.nextInt(20);
             answer = a % b;
             stringBuilder.append(Integer.toString(a) + "\uFF05" + Integer.toString(b) + " =");
+
         } else if (operator > 65 && operator <= 70) {
             c = Double.valueOf(numberFormat.format(1 + (21 - 1) * rand.nextDouble()));
             d = Double.valueOf(numberFormat.format(1 + (21 - 1) * rand.nextDouble()));

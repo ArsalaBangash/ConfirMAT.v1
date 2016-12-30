@@ -13,8 +13,6 @@ import android.widget.Toast;
 public class Report extends AppCompatActivity implements ReportAdapter.ListItemClickListener {
     Intent reportInit;
     private static final int NUM_REPORT_ITEMS = ReportData.getReportData().getReportSize();
-    private ReportAdapter reportAdapter;
-    private RecyclerView reportRecycler;
 
 
     @Override
@@ -23,19 +21,15 @@ public class Report extends AppCompatActivity implements ReportAdapter.ListItemC
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_report);
         TextView reportTimeTakenText = (TextView)findViewById(R.id.reportTimeTaken);
-        TextView finalReportText = (TextView)findViewById(R.id.finalReportText);
-        Typeface robotoFont = Typeface.createFromAsset(getAssets(), "fonts/roboto.ttf");
-        reportTimeTakenText.setTypeface(robotoFont);
-        finalReportText.setTypeface(robotoFont);
         reportInit = getIntent();
         String timeTaken = reportInit.getStringExtra(Intent.EXTRA_TEXT);
         reportTimeTakenText.setText("Your Time Taken: " + timeTaken);
 
-        reportRecycler = (RecyclerView) findViewById(R.id.reportList);
+        RecyclerView reportRecycler = (RecyclerView) findViewById(R.id.reportList);
         LinearLayoutManager reportLayoutManager = new LinearLayoutManager(this);
         reportRecycler.setLayoutManager(reportLayoutManager);
         reportRecycler.setHasFixedSize(true);
-        reportAdapter = new ReportAdapter(NUM_REPORT_ITEMS, this);
+        ReportAdapter reportAdapter = new ReportAdapter(NUM_REPORT_ITEMS, this);
         reportRecycler.setAdapter(reportAdapter);
     }
 

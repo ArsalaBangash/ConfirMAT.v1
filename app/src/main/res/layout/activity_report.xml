@@ -13,6 +13,7 @@
     <TextView
         android:text="Final Report"
         android:textSize="50dp"
+        android:fontFamily="sans-serif-light"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -22,6 +23,7 @@
 
     <TextView
         android:text="Your time taken: "
+        android:fontFamily="sans-serif-light"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/reportTimeTaken"

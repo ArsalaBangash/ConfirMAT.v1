@@ -62,6 +62,7 @@
 
     <TextView
         android:text="Well Done!"
+        android:fontFamily="sans-serif-light"
         android:textSize="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -72,6 +73,7 @@
 
     <TextView
         android:text="Your time taken: "
+        android:fontFamily="sans-serif-light"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/finalTime"

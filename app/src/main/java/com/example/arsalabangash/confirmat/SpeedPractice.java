@@ -1,7 +1,6 @@
 package com.example.arsalabangash.confirmat;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -79,10 +78,11 @@ public class SpeedPractice extends AppCompatActivity {
             }
             correctMP.start();
             questions--;
-            ReportData.getReportData().inputReportData(String.valueOf(currentProblem.getText()),
-                                                        String.valueOf(currentAnswer.getText()),
-                                                        String.valueOf(currentQuestionTimeTaken) + "s",
-                                                        String.valueOf(currentQuestionsAttempts));
+            ReportData.getReportData().inputReportData(
+                    String.valueOf(currentProblem.getText()).substring(0, currentProblem.getText().length() - 1),
+                    String.valueOf(currentAnswer.getText()),
+                    String.valueOf(currentQuestionTimeTaken) + "s",
+                    String.valueOf(currentQuestionsAttempts));
             currentQuestionsAttempts = 0;
             currentQuestionTimeTaken = 0;
             currentProblem.setText(mathModel.newProblem());

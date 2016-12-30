@@ -12,6 +12,7 @@
 
     <TextView
         android:text="Settings"
+        android:fontFamily="sans-serif-light"
         android:textSize="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

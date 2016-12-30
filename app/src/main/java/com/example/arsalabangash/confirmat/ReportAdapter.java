@@ -65,6 +65,10 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportView
             itemView.setOnClickListener(this);
         }
 
+        /**
+         * Binds the data to the current ViewHolder
+         * @param listIndex The index of the question for which data has to be displayed
+         */
         void bind(int listIndex) {
             listItemNumberView.setText(ReportData.getReportData().getQuestionReport(listIndex));
         }
