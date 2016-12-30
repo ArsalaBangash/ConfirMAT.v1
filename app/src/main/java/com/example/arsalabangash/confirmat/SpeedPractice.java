@@ -1,5 +1,6 @@
 package com.example.arsalabangash.confirmat;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
@@ -32,8 +33,8 @@ public class SpeedPractice extends AppCompatActivity {
         timer = (Chronometer) findViewById(R.id.timeTaken);
 
 
-        questions = 5;
-        mathModel = new MathModel();
+        questions = 10;
+        mathModel = new MathModel(this.getPreferences(Context.MODE_PRIVATE));
         currentProblem.setText(mathModel.newProblem());
         speedPracticeInit = getIntent();
         if (speedPracticeInit.getStringExtra(Intent.EXTRA_TEXT).equals("Initial")) {

@@ -11,7 +11,6 @@ import android.text.style.SuperscriptSpan;
 import android.view.View;
 import android.widget.Chronometer;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -44,7 +43,7 @@ public class FactorisationBolt extends AppCompatActivity {
         questionsLeft = (TextView) findViewById(R.id.questionsLeft);
         timer = (Chronometer) findViewById(R.id.timeTaken);
 
-        questions = 3;
+        questions = 1;
         questionsLeft.setText(String.valueOf(questions));
         timer.start();
         rand = new Random();

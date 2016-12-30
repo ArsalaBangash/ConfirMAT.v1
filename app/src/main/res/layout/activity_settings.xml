@@ -22,32 +22,6 @@
         android:layout_centerHorizontal="true" />
 
     <android.support.v7.widget.SwitchCompat
-        android:text="Addition   "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:id="@+id/additionSwitch"
-        android:checked="true"
-        android:layout_below="@+id/settingsText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="35dp"
-        android:layout_marginStart="35dp" />
-
-    <android.support.v7.widget.SwitchCompat
-        android:text="Subtraction   "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/subtractionSwitch"
-        android:checked="true"
-        android:layout_alignBaseline="@+id/additionSwitch"
-        android:layout_alignBottom="@+id/additionSwitch"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="29dp"
-        android:layout_marginEnd="29dp" />
-
-    <android.support.v7.widget.SwitchCompat
         android:text="Multiplication   "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -81,17 +55,6 @@
         android:layout_alignEnd="@+id/divideSwitch" />
 
     <android.support.v7.widget.SwitchCompat
-        android:text="Decimals   "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/decimalSwitch"
-        android:checked="true"
-        android:layout_alignBaseline="@+id/rootSwitch"
-        android:layout_alignBottom="@+id/rootSwitch"
-        android:layout_alignRight="@+id/expSwitch"
-        android:layout_alignEnd="@+id/expSwitch" />
-
-    <android.support.v7.widget.SwitchCompat
         android:text="Logarithms   "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -103,14 +66,69 @@
         android:layout_alignEnd="@+id/multiplySwitch" />
 
     <android.support.v7.widget.SwitchCompat
+        android:text="Subtraction   "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/subtractionSwitch"
+        android:checked="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_alignBaseline="@+id/additionSwitch"
+        android:layout_alignBottom="@+id/additionSwitch"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <android.support.v7.widget.SwitchCompat
+        android:text="Decimal Addition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/decimalAddSwitch"
+        android:checked="true"
+        android:layout_marginTop="34dp"
+        android:layout_below="@+id/rootSwitch" />
+
+    <android.support.v7.widget.SwitchCompat
+        android:text="Addition   "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:id="@+id/additionSwitch"
+        android:checked="true"
+        android:layout_below="@+id/settingsText"
+        android:layout_alignRight="@+id/decimalAddSwitch"
+        android:layout_alignEnd="@+id/decimalAddSwitch" />
+
+    <android.support.v7.widget.SwitchCompat
+        android:text="Decimal Subtraction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/decimalSubSwitch"
+        android:checked="true"
+        android:layout_alignBaseline="@+id/decimalAddSwitch"
+        android:layout_alignBottom="@+id/decimalAddSwitch"
+        android:layout_alignRight="@+id/expSwitch"
+        android:layout_alignEnd="@+id/expSwitch" />
+
+    <android.support.v7.widget.SwitchCompat
+        android:text="Modulus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
+        android:id="@+id/modSwitch"
+        android:checked="true"
+        android:layout_below="@+id/expSwitch"
+        android:layout_alignRight="@+id/decimalSubSwitch"
+        android:layout_alignEnd="@+id/decimalSubSwitch" />
+
+    <android.support.v7.widget.SwitchCompat
         android:text="Roots   "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
         android:id="@+id/rootSwitch"
         android:checked="true"
-        android:layout_below="@+id/logSwitch"
-        android:layout_alignRight="@+id/logSwitch"
-        android:layout_alignEnd="@+id/logSwitch" />
+        android:layout_alignBaseline="@+id/modSwitch"
+        android:layout_alignBottom="@+id/modSwitch"
+        android:layout_alignRight="@+id/decimalAddSwitch"
+        android:layout_alignEnd="@+id/decimalAddSwitch" />
 
 </RelativeLayout>
