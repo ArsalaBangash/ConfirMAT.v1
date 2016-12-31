@@ -1,6 +1,5 @@
 package com.example.arsalabangash.confirmat;
 
-import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.preference.PreferenceManager;
@@ -34,7 +33,7 @@ public class SpeedPractice extends AppCompatActivity {
         timer = (Chronometer) findViewById(R.id.timeTaken);
 
 
-        questions = 10;
+        questions = 3;
         mathModel = new MathModel(
                 PreferenceManager.getDefaultSharedPreferences(getBaseContext()));
         currentProblem.setText(mathModel.newProblem());

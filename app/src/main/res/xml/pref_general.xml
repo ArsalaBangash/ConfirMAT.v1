@@ -6,6 +6,7 @@
         android:defaultValue="true"
         android:key="Addition"
         android:title="Addition"
+        android:id="@+id/AdditionPref"
         android:summaryOn="Addition questions enabled during the Speed Practice Bolt"
         android:summaryOff="Addition questions disabled during the Speed Practice Bolt"/>
 
@@ -14,6 +15,7 @@
         android:defaultValue="true"
         android:key="Subtraction"
         android:title="Subtraction"
+        android:id="@+id/SubtractionPref"
         android:summaryOn="Subtraction questions enabled during the Speed Practice Bolt"
         android:summaryOff="Subtraction questions disabled during the Speed Practice Bolt"/>
 
@@ -22,6 +24,7 @@
         android:defaultValue="true"
         android:key="Multiplication"
         android:title="Multiplication"
+        android:id="@+id/MultiplicationPref"
         android:summaryOn="Multiplication questions enabled during the Speed Practice Bolt"
         android:summaryOff="Multiplication questions disabled during the Speed Practice Bolt"/>
 
@@ -30,6 +33,7 @@
         android:defaultValue="true"
         android:key="Division"
         android:title="Division"
+        android:id="@+id/DivisionPref"
         android:summaryOn="Division questions enabled during the Speed Practice Bolt"
         android:summaryOff="Division questions disabled during the Speed Practice Bolt"/>
 
@@ -38,6 +42,7 @@
         android:defaultValue="true"
         android:key="Log"
         android:title="Logarithms"
+        android:id="@+id/LogPref"
         android:summaryOn="Logarithmic questions enabled during the Speed Practice Bolt"
         android:summaryOff="Logarithmic questions disabled during the Speed Practice Bolt"/>
 
@@ -46,6 +51,7 @@
         android:defaultValue="true"
         android:key="Exponents"
         android:title="Exponents"
+        android:id="@+id/ExponentsPref"
         android:summaryOn="Exponential questions enabled during the Speed Practice Bolt"
         android:summaryOff="Exponential questions disabled during the Speed Practice Bolt"/>
 
@@ -54,6 +60,7 @@
         android:defaultValue="true"
         android:key="Root"
         android:title="Roots"
+        android:id="@+id/RootPref"
         android:summaryOn="Root questions enabled during the Speed Practice Bolt"
         android:summaryOff="Root questions disabled during the Speed Practice Bolt"/>
 
@@ -62,6 +69,7 @@
         android:defaultValue="true"
         android:key="Modulus"
         android:title="Modulus"
+        android:id="@+id/ModulusPref"
         android:summaryOn="Modulus questions enabled during the Speed Practice Bolt"
         android:summaryOff="Modulus questions disabled during the Speed Practice Bolt"/>
 
@@ -70,6 +78,7 @@
         android:defaultValue="true"
         android:key="DecimalAddition"
         android:title="Decimal Addition"
+        android:id="@+id/DecimalAdditionPref"
         android:summaryOn="Addition questions involving decimals enabled during the Speed Practice Bolt"
         android:summaryOff="Addition questions involving decimals disabled during the Speed Practice Bolt"/>
 
@@ -78,6 +87,7 @@
         android:defaultValue="true"
         android:key="DecimalSubtraction"
         android:title="Decimal Subtraction"
+        android:id="@+id/DecimalSubtractionPref"
         android:summaryOn="Subtraction questions involving decimals enabled during the Speed Practice Bolt"
         android:summaryOff="Subtraction questions involving decimals disabled during the Speed Practice Bolt"/>
 
