@@ -1,33 +1,84 @@
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <SwitchPreference
+        android:fontFamily="sans-serif-light"
         android:defaultValue="true"
-        android:key="example_switch"
-        android:summary="@string/pref_description_social_recommendations"
-        android:title="@string/pref_title_social_recommendations" />
+        android:key="Addition"
+        android:title="Addition"
+        android:summaryOn="Addition questions enabled during the Speed Practice Bolt"
+        android:summaryOff="Addition questions disabled during the Speed Practice Bolt"/>
 
-    <!-- NOTE: EditTextPreference accepts EditText attributes. -->
-    <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
-    <EditTextPreference
-        android:capitalize="words"
-        android:defaultValue="@string/pref_default_display_name"
-        android:inputType="textCapWords"
-        android:key="example_text"
-        android:maxLines="1"
-        android:selectAllOnFocus="true"
-        android:singleLine="true"
-        android:title="@string/pref_title_display_name" />
+    <SwitchPreference
+        android:fontFamily="sans-serif-light"
+        android:defaultValue="true"
+        android:key="Subtraction"
+        android:title="Subtraction"
+        android:summaryOn="Subtraction questions enabled during the Speed Practice Bolt"
+        android:summaryOff="Subtraction questions disabled during the Speed Practice Bolt"/>
 
-    <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
-         dismiss it. -->
-    <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
-    <ListPreference
-        android:defaultValue="-1"
-        android:entries="@array/pref_example_list_titles"
-        android:entryValues="@array/pref_example_list_values"
-        android:key="example_list"
-        android:negativeButtonText="@null"
-        android:positiveButtonText="@null"
-        android:title="@string/pref_title_add_friends_to_messages" />
+    <SwitchPreference
+        android:fontFamily="sans-serif-light"
+        android:defaultValue="true"
+        android:key="Multiplication"
+        android:title="Multiplication"
+        android:summaryOn="Multiplication questions enabled during the Speed Practice Bolt"
+        android:summaryOff="Multiplication questions disabled during the Speed Practice Bolt"/>
+
+    <SwitchPreference
+        android:fontFamily="sans-serif-light"
+        android:defaultValue="true"
+        android:key="Division"
+        android:title="Division"
+        android:summaryOn="Division questions enabled during the Speed Practice Bolt"
+        android:summaryOff="Division questions disabled during the Speed Practice Bolt"/>
+
+    <SwitchPreference
+        android:fontFamily="sans-serif-light"
+        android:defaultValue="true"
+        android:key="Log"
+        android:title="Logarithms"
+        android:summaryOn="Logarithmic questions enabled during the Speed Practice Bolt"
+        android:summaryOff="Logarithmic questions disabled during the Speed Practice Bolt"/>
+
+    <SwitchPreference
+        android:fontFamily="sans-serif-light"
+        android:defaultValue="true"
+        android:key="Exponents"
+        android:title="Exponents"
+        android:summaryOn="Exponential questions enabled during the Speed Practice Bolt"
+        android:summaryOff="Exponential questions disabled during the Speed Practice Bolt"/>
+
+    <SwitchPreference
+        android:fontFamily="sans-serif-light"
+        android:defaultValue="true"
+        android:key="Root"
+        android:title="Roots"
+        android:summaryOn="Root questions enabled during the Speed Practice Bolt"
+        android:summaryOff="Root questions disabled during the Speed Practice Bolt"/>
+
+    <SwitchPreference
+        android:fontFamily="sans-serif-light"
+        android:defaultValue="true"
+        android:key="Modulus"
+        android:title="Modulus"
+        android:summaryOn="Modulus questions enabled during the Speed Practice Bolt"
+        android:summaryOff="Modulus questions disabled during the Speed Practice Bolt"/>
+
+    <SwitchPreference
+        android:fontFamily="sans-serif-light"
+        android:defaultValue="true"
+        android:key="DecimalAddition"
+        android:title="Decimal Addition"
+        android:summaryOn="Addition questions involving decimals enabled during the Speed Practice Bolt"
+        android:summaryOff="Addition questions involving decimals disabled during the Speed Practice Bolt"/>
+
+    <SwitchPreference
+        android:fontFamily="sans-serif-light"
+        android:defaultValue="true"
+        android:key="DecimalSubtraction"
+        android:title="Decimal Subtraction"
+        android:summaryOn="Subtraction questions involving decimals enabled during the Speed Practice Bolt"
+        android:summaryOff="Subtraction questions involving decimals disabled during the Speed Practice Bolt"/>
 
 </PreferenceScreen>

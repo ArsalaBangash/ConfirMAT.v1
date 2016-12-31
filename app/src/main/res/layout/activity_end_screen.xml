@@ -16,6 +16,7 @@
 
     <Button
         android:id="@+id/playAgain"
+        android:fontFamily="sans-serif-light"
         android:textAllCaps="false"
         android:text="Play Again"
         android:textColor="#FFFFFFFF"
@@ -32,6 +33,7 @@
     <Button
         android:id="@+id/report"
         android:textAllCaps="false"
+        android:fontFamily="sans-serif-light"
         android:text="Report"
         android:textColor="#FFFFFFFF"
         android:textSize="30dp"
@@ -46,6 +48,7 @@
 
     <Button
         android:id="@+id/mainMenu"
+        android:fontFamily="sans-serif-light"
         android:textAllCaps="false"
         android:text="Main Menu"
         android:textColor="#FFFFFFFF"

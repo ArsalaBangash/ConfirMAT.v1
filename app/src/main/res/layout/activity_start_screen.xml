@@ -15,7 +15,8 @@
     <Button
         android:id="@+id/startGame"
         android:textAllCaps="false"
-        android:text="Start Game"
+        android:text="Math Practice"
+        android:fontFamily="sans-serif-light"
         android:textColor="#FFFFFFFF"
         android:textSize="30dp"
         android:layout_width="300dp"
@@ -31,6 +32,7 @@
         android:id="@+id/settings"
         android:textAllCaps="false"
         android:text="Settings"
+        android:fontFamily="sans-serif-light"
         android:textColor="#FFFFFFFF"
         android:textSize="30dp"
         android:layout_width="300dp"
@@ -43,7 +45,7 @@
     </Button>
 
     <TextView
-        android:text="CofirMAT"
+        android:text="βOLTℤ"
         android:fontFamily="sans-serif-light"
         android:textSize="50dp"
         android:layout_width="wrap_content"

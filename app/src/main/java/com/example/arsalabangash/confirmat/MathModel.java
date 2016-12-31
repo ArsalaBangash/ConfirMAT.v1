@@ -8,6 +8,7 @@ import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.SuperscriptSpan;
+import android.util.Log;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -177,8 +178,10 @@ public class MathModel {
     public SpannableStringBuilder newProblem() {
         questionStringBuilder = new SpannableStringBuilder();
 
+        Log.d("LOOK", String.valueOf(sharedPreferences.getBoolean("Subtraction", false)));
         while ((questionStringBuilder.length() == 0)) {
             operator = rand.nextInt(76);
+
 
             if (operator <= 10) {
                 if (sharedPreferences.getBoolean("Addition", true)) {
@@ -202,17 +205,17 @@ public class MathModel {
 
             } else if (operator > 40 && operator <= 49) {
                 if (sharedPreferences.getBoolean("Log", true)) {
-                    questionStringBuilder = exponentFlash();
+                    questionStringBuilder = logFlash();
                 }
 
             } else if (operator > 49 && operator <= 54) {
                 if (sharedPreferences.getBoolean("Exponents", true)) {
-                    questionStringBuilder = rootFlash();
+                    questionStringBuilder = exponentFlash();
                 }
 
             } else if (operator > 54 && operator <= 60) {
                 if (sharedPreferences.getBoolean("Root", true)) {
-                    questionStringBuilder = logFlash();
+                    questionStringBuilder = rootFlash();
                 }
 
             } else if (operator > 60 && operator <= 65) {

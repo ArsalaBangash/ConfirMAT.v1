@@ -3,6 +3,7 @@ package com.example.arsalabangash.confirmat;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -34,7 +35,8 @@ public class SpeedPractice extends AppCompatActivity {
 
 
         questions = 10;
-        mathModel = new MathModel(this.getPreferences(Context.MODE_PRIVATE));
+        mathModel = new MathModel(
+                PreferenceManager.getDefaultSharedPreferences(getBaseContext()));
         currentProblem.setText(mathModel.newProblem());
         speedPracticeInit = getIntent();
         if (speedPracticeInit.getStringExtra(Intent.EXTRA_TEXT).equals("Initial")) {
